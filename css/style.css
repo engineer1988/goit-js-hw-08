@@ -14,13 +14,13 @@ body {
   width: 360px;
   height: 200px;
   cursor: pointer;
+  transition: transform 250ms ease-in-out;
 }
 
 .gallery-item {
   width: calc((100% - 48px) / 3);
-  transition: transform 250ms ease-in-out;
 }
 
-.gallery-item:hover {
+.gallery-image:hover {
   transform: scale(1.1);
 }

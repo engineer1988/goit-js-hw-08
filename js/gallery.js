@@ -101,15 +101,15 @@ const modalWindow = galleryImage.forEach((image) => {
 
 function showModalWindow(event) {
   const selected = event.target;
-  const instance = basicLightbox.create(
+  const modal = basicLightbox.create(
     `
     <img src="${selected.dataset.source}" >
 `
   );
-  instance.show();
-  document.addEventListener("keypress", function (e) {
+  modal.show();
+  document.addEventListener("keydown", function (e) {
     if (e.code === "Escape") {
-      instance.close();
+      modal.close();
     }
   });
 }
