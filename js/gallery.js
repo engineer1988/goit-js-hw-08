@@ -83,31 +83,30 @@ const markup = images
 
 gallery.insertAdjacentHTML("afterbegin", markup);
 
-const galleryLink = document.querySelectorAll(" .gallery-link");
+const preventDefoultGaleryLink = gallery.addEventListener("click", handleClick);
 
-const preventDefoultGaleryLink = galleryLink.forEach((link) => {
-  link.addEventListener("click", handleClick);
-});
-
-function handleClick(event) {
-  event.preventDefault();
+function handleClick(e) {
+  e.preventDefault();
 }
 
-const galleryImage = document.querySelectorAll(".gallery-image");
+const modalWindow = gallery.addEventListener("click", showModalWindow);
 
-const modalWindow = galleryImage.forEach((image) => {
-  image.addEventListener("click", showModalWindow);
-});
+function showModalWindow(e) {
+  const selected = e.target;
 
-function showModalWindow(event) {
-  const selected = event.target;
+  if (selected.nodeName !== "IMG") {
+    return;
+  }
+
   const modal = basicLightbox.create(
     `
     <img src="${selected.dataset.source}" >
 `
   );
+
   modal.show();
-  document.addEventListener("keydown", function (e) {
+
+  document.addEventListener("keydown", (e) => {
     if (e.code === "Escape") {
       modal.close();
     }
