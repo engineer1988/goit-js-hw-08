@@ -24,3 +24,11 @@ body {
 .gallery-image:hover {
   transform: scale(1.1);
 }
+
+.gallary-text {
+  color: white;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}

@@ -83,32 +83,29 @@ const markup = images
 
 gallery.insertAdjacentHTML("afterbegin", markup);
 
-const preventDefoultGaleryLink = gallery.addEventListener("click", handleClick);
+const lightBox = gallery.addEventListener("click", handleClick);
 
 function handleClick(e) {
   e.preventDefault();
-}
 
-const modalWindow = gallery.addEventListener("click", showModalWindow);
-
-function showModalWindow(e) {
   const selected = e.target;
 
   if (selected.nodeName !== "IMG") {
     return;
   }
 
-  const modal = basicLightbox.create(
+  const modalWindow = basicLightbox.create(
     `
     <img src="${selected.dataset.source}" >
+    <p class="gallary-text">"${selected.alt}"</p>
 `
   );
 
-  modal.show();
+  modalWindow.show();
 
   document.addEventListener("keydown", (e) => {
     if (e.code === "Escape") {
-      modal.close();
+      modalWindow.close();
     }
   });
 }
